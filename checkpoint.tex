@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{graphicx}
+
+\title{CS63 Spring 2022\\Final Project Checkpoint}
+\author{Annie French and Gyan Bains}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Project Goal}
+
+%This section should contain a brief overview of the primary goal of your project.
+
+
+The goal of our project is to use MCTS to play the game checkers so that it can beat a random game agent 100\% of the time and hopefully beat a human player 100\% of the time, or at least in more than 50\% of games. Even if it loses games against humans, we would like to see our program making respectable moves throughout the course of the games.
+
+\section{AI Methods Used}
+
+% This section should clearly list and describe the different AI algorithms,
+% techniques, and/or methods you plan to use for your project.
+
+We will use Monte Carlo Tree Search to find the best move given a checkers board state, and use that stored information to play a full game of checkers. On each of many rollouts, Monte Carlo Tree Search performs selection, expansion, simulation, and backpropagation. It explores different states of the game by taking different moves, and randomly plays the game to the end from a given state to see whether that move often results in a win or loss. 
+
+\section{Staged Development Plan}
+
+% This section should contain an ordered list of sub-goals you can use as
+% incremental targets on your way to your overall goal, as well as ``stretch
+% goals'' to pursue after achieving your primary goal.
+
+% Because it is often hard to estimate the difficulty of AI problems, it
+% is important to have a staged plan that allows you to adapt if things
+% go faster or slower than you expect.  For this reason, it's best to
+% design your sub-goals and stretch-goals such that any one could
+% conceivably be used as a basis for a final report/presentation if
+% necessary; then, try to get as far as you can in the time available. 
+
+1. Fully implement checkers game\\
+2. MCTS agent beats a random player on a small (6x6) game board\\
+3. MCTS agent beats a human player \\
+4. Have one MCTS agent play against another MCTS agent, experimenting with different numbers of rollouts and UCB constants to see which parameters win the game more often
+
+
+Once we have successfully implemented a checkers game and the MCTS agent can play it, we will do some of the extensions from Lab 4, such as having the agent play itself and exploring how changing the UCB\_CONST parameter affects the game. We will do experiments by playing agents with different parameters against each other to see which UCB constants perform best given a certain number of rollouts. 
+
+\section{Measure of Success}
+
+% This section should describe what ``success'' looks like for your
+% project, and how you will measure progress towards that goal.
+
+Our first measure of success will be whether the agent can beat a random agent consistently. After we've accomplished that, the next measure of success will be the percentage of games that the agent can win against a human player. Finally, we will have the agent play against itself, and we expect that an agent that uses more rollouts should consistently beat an agent that performs fewer rollouts. 
+
+\section{Plans for Analyzing Results}
+
+% This section should describe what experimental and statistical methods
+% you will use to analyze and validate your results.
+
+We will each play ten games against our program to ensure a large enough sample size for human vs agent games. If this win rate is below 50\%, we will have the agent play against other human players to see if our agent is performing poorly overall. We will also have our agent play ten games against random moves to ensure that our program wins 100 percent of those games. Once we have two agents playing against each other, we will first increase or decrease the number of rollouts to see which agent performs better over 10 games. Then we will give each agent the same number of rollouts and vary the UCB constant to determine what UCB constant has the highest win rate against our initial constant. 
+\end{document}
